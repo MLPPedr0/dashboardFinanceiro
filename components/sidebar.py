@@ -13,8 +13,35 @@ import pandas as pd
 
 # ========= Layout ========= #
 layout = dbc.Col([
+    html.H1("Finanças", className="tesxt-primary"),
+    html.Hr(),
 
-])
+    # Perfil
+    dbc.Button(id='botao-avatar',
+               children=[html.Img(src='/assets/img_hom.png', id='avatar_change', alt='Avatar', className='perfil_avatar')
+                         ], style={'backgroud-color': 'transparent', 'border-color': 'transparent'}),
+
+    # New
+    dbc.Row([
+        dbc.Col([
+            dbc.Button(color='success', id='new-recipe',
+                       children=['Receita'])
+        ], width=6),
+        dbc.Col([
+            dbc.Button(color='danger', id='new-expense', children=['Despesa'])
+        ], width=6)
+    ]),
+
+    # Navigation
+    html.Hr(),
+
+    dbc.Nav(
+        [
+            dbc.NavLink("Dashboard", href="/dashboards", active="exact"),
+            dbc.NavLink("Extratos", href="/extratos", active="exact"),
+        ], vertical=True, pills=True, id='nav_buttons', style={"margin-button": "50px"}
+    )
+], id='sidebar_completa')
 
 
 # =========  Callbacks  =========== #

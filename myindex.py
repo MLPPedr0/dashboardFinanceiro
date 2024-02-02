@@ -18,10 +18,10 @@ app.layout = dbc.Container(children=[
         dbc.Col([
             dcc.Location(id='url'),
             sidebar.layout
-        ], md=2, style={'background-color': 'red', 'height': '1080px'}),
-        dbc.col([
+        ], md=2, style={'background-color': 'grey', 'height': '1080px'}),
+        dbc.Col([
             content
-        ], md=10, style={'background-color': 'green', 'height': '1080px'})
+        ], md=10, style={'background-color': 'darkgrey', 'height': '1080px'})
     ])
 
 ], fluid=True,)
@@ -37,4 +37,4 @@ def render_page(pathname):
 
 
 if __name__ == '__main__':
-    app.run_server(port=8051, debug=True)
+    app.run_server(port=8050, debug=True)
