@@ -32,6 +32,22 @@ layout = dbc.Col([
         ], width=6)
     ]),
 
+    # Modal Recipe
+    dbc.Modal([
+        dbc.ModalHeader(dbc.ModalTitle('Add to Recipe')),
+        dbc.ModalBody([
+
+        ])
+    ], id='modal-new-recipe'),
+
+    # Modal Expense
+    dbc.Modal([
+        dbc.ModalHeader(dbc.ModalTitle('Add to Expense')),
+        dbc.ModalBody([
+
+        ])
+    ], id='modal-new-expense'),
+
     # Navigation
     html.Hr(),
 
@@ -41,8 +57,29 @@ layout = dbc.Col([
             dbc.NavLink("Extratos", href="/extratos", active="exact"),
         ], vertical=True, pills=True, id='nav_buttons', style={"margin-button": "50px"}
     )
+
+
 ], id='sidebar_completa')
 
 
 # =========  Callbacks  =========== #
-# Pop-up receita
+# Pop-up recipe
+@app.callback(
+    Output('modal-new-recipe', 'is_open'),
+    Input('open-new-recipe', 'n_clicks'),
+    State('modal-new-recipe', 'is_open')
+)
+def toggle_modal(n1, is_open):
+    if n1:
+        return not is_open
+
+
+# Pop-up expense
+@app.callback(
+    Output('modal-new-expense', 'is_open'),
+    Input('open-new-expense', 'n_clicks'),
+    State('modal-new-expense', 'is_open')
+)
+def toggle_modal(n1, is_open):
+    if n1:
+        return not is_open
